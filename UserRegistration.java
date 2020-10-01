@@ -29,6 +29,12 @@ public class UserRegistration {
 		String email = sc.nextLine();
 		pattern = "[\\w\\d+-_]+(?:\\.[\\w\\d+-_]+)*@(?:[\\w\\d]+\\.)+[\\w]{2,}";
 		System.out.println(validate(email,pattern)+" email");
+		
+		//Phone Number Validation
+		System.out.println("Enter Phone Number");
+		String phoneNum = sc.nextLine();
+		pattern = "^[0-9]{2}[\\s][0-9]{10}$";
+		System.out.println(validate(phoneNum,pattern)+" phone number");
 
 		sc.close();
 	}
