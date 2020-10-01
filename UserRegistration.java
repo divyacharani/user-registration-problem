@@ -24,6 +24,12 @@ public class UserRegistration {
 		pattern = "^[A-Z][Aa-zZ]{2,}$";
 		System.out.println(validate(lastName,pattern)+" last name");
 		
+		//Email Validation
+		System.out.println("Enter Email ");
+		String email = sc.nextLine();
+		pattern = "[\\w\\d+-_]+(?:\\.[\\w\\d+-_]+)*@(?:[\\w\\d]+\\.)+[\\w]{2,}";
+		System.out.println(validate(email,pattern)+" email");
+
 		sc.close();
 	}
 	
