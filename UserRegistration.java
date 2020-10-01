@@ -39,7 +39,7 @@ public class UserRegistration {
 		//Password Validation
 		System.out.println("Enter Password ");
 		String password = sc.nextLine();
-		pattern = "^(?=.*[A-Z]).{8,}$";
+		pattern = "^(?=.*[A-Z])(?=.*\\d).{8,}$";
 		System.out.println(validate(password,pattern));
 
 		sc.close();
