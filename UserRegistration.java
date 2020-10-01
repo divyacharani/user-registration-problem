@@ -27,7 +27,7 @@ public class UserRegistration {
 		//Email Validation
 		System.out.println("Enter Email ");
 		String email = sc.nextLine();
-		pattern = "[\\w\\d+-_]+(?:\\.[\\w\\d+-_]+)*@(?:[\\w\\d]+\\.)+[\\w]{2,}";
+		pattern = "[\\w+_-]+(?:\\.[\\w_-]+)*@(?:[\\w]+\\.)+[a-zA-Z]{2,}";
 		System.out.println(validate(email,pattern)+" email");
 		
 		//Phone Number Validation
@@ -39,8 +39,8 @@ public class UserRegistration {
 		//Password Validation
 		System.out.println("Enter Password ");
 		String password = sc.nextLine();
-		pattern = "^(?=.*[A-Z])(?=.*\\d).{8,}$";
-		System.out.println(validate(password,pattern));
+		pattern = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=]).{8,}$";
+		System.out.println(validate(password,pattern)+" password");
 
 		sc.close();
 	}
