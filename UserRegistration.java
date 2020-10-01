@@ -35,6 +35,12 @@ public class UserRegistration {
 		String phoneNum = sc.nextLine();
 		pattern = "^[0-9]{2}[\\s][0-9]{10}$";
 		System.out.println(validate(phoneNum,pattern)+" phone number");
+		
+		//Password Validation
+		System.out.println("Enter Password ");
+		String password = sc.nextLine();
+		pattern = "^.{8,}$";
+		System.out.println(validate(password,pattern));
 
 		sc.close();
 	}
