@@ -11,11 +11,18 @@ public class UserRegistration {
 		//Welcome Message
 		System.out.println("Welcome to User Registration Program");
 		Scanner sc = new Scanner(System.in);
-
+		
+		//First Name Validation
 		System.out.println("Enter First Name ");
 		String firstName = sc.nextLine();
 		String pattern = "^[A-Z][Aa-zZ]{2,}$";
 		System.out.println(validate(firstName,pattern)+" first name");
+		
+		//Last Name Validation
+		System.out.println("Enter Last Name ");
+		String lastName = sc.nextLine();
+		pattern = "^[A-Z][Aa-zZ]{2,}$";
+		System.out.println(validate(lastName,pattern)+" last name");
 		
 		sc.close();
 	}
