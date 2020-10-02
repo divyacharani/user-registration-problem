@@ -20,79 +20,98 @@ public class UserRegistration {
 		//First Name Validation
 		System.out.println("Enter First Name ");
 		String firstName = sc.nextLine();
-		if(!(validateFirstName(firstName)))
-			System.out.println("First name should have minimum 3 characters and start with Capital letter.");
+		validateFirstName(firstName);
 
 		//Last Name Validation
 		System.out.println("Enter Last Name ");
 		String lastName = sc.nextLine();
-		if(!(validateLastName(lastName)))
-			System.out.println("Last name should have minimum 3 characters and start with Capital letter.");
-
+		validateLastName(lastName);
+			
 		//Email Validation
 		System.out.println("Enter Email ");
 		String email = sc.nextLine();
-		if(!(validateEmail(email)))
-			System.out.println("Invalid Email ");
+		validateEmail(email);
 
 		//Phone Number Validation
 		System.out.println("Enter Phone Number");
 		String phoneNum = sc.nextLine();
-		if(!(validatePhoneNumber(phoneNum)))
-			System.out.println("Phone number should start with country code followed by space and 10 digit number.");
+		validatePhoneNumber(phoneNum);
 
 		//Password Validation
 		System.out.println("Enter Password ");
 		String password = sc.nextLine();
-		if(!(validatePassword(password)))
-			System.out.println("Password should contain minimum 8 characters, atleast 1 uppercase letter, atleast 1 numeric number and exactly 1 special character.");
+		validatePassword(password);
+
 		sc.close();
 	}
 
 	//Method to validate first name
 	public static boolean validateFirstName(String firstName) {
-		Pattern patternObj = Pattern.compile(FIRST_NAME_PATTERN);
-		Matcher matcher = patternObj.matcher(firstName);
-		if(matcher.matches()) 
+		String message = "Invalid!! First name should have minimum 3 characters and start with Capital letter.";
+		try {
+			validation(firstName,FIRST_NAME_PATTERN,message);
 			return true;
-		else
-			return false;
+		}
+		catch(InvalidEntryException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	//Method to validate last name
 	public static boolean validateLastName(String lastName) {
-		Pattern patternObj = Pattern.compile(LAST_NAME_PATTERN);
-		Matcher matcher = patternObj.matcher(lastName);
-		if(matcher.matches()) 
+		String message = "Invalid!! Last name should have minimum 3 characters and start with Capital letter.";
+		try {
+			validation(lastName,LAST_NAME_PATTERN,message);
 			return true;
-		else
-			return false;
+		}
+		catch(InvalidEntryException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	//Method to validate email
 	public static boolean validateEmail(String email) {
-		Pattern patternObj = Pattern.compile(EMAIL_PATTERN);
-		Matcher matcher = patternObj.matcher(email);
-		if(matcher.matches()) 
+		String message = "Invalid Email!!";
+		try {
+			validation(email,EMAIL_PATTERN,message);
 			return true;
-		else
-			return false;
+		}
+		catch(InvalidEntryException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	//Method to validate phone number
 	public static boolean validatePhoneNumber(String phoneNumber) {
-		Pattern patternObj = Pattern.compile(PHONE_NUMBER_PATTERN);
-		Matcher matcher = patternObj.matcher(phoneNumber);
-		if(matcher.matches()) 
+		String message = "Phone number should start with country code followed by space and 10 digit number.";
+		try {
+			validation(phoneNumber,PHONE_NUMBER_PATTERN,message);
 			return true;
-		else
-			return false;
+		}
+		catch(InvalidEntryException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	//Method to validate password
 	public static boolean validatePassword(String password) {
-		Pattern patternObj = Pattern.compile(PASSWORD_PATTERN);
-		Matcher matcher = patternObj.matcher(password);
-		if(matcher.matches()) 
+		String message = "Password should contain minimum 8 characters, atleast 1 uppercase letter, atleast 1 numeric number and exactly 1 special character";
+		try {
+			validation(password,PASSWORD_PATTERN,message);
 			return true;
-		else
-			return false;
+		}
+		catch(InvalidEntryException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	//Method to implement exception
+	public static void validation(String str, String pattern, String message) throws InvalidEntryException {
+		Pattern patternObj = Pattern.compile(pattern);
+		Matcher matcher = patternObj.matcher(str);
+		if(!(matcher.matches()))
+			throw new InvalidEntryException(message);	
+
 	}
 
 }
